@@ -1,1 +1,1 @@
-override chrome://browser/content/aboutPrivateBrowsing.xhtml data:text/html,
+override chrome://browser/content/aboutPrivateBrowsing.xhtml chrome://global/content/logopage.xhtml
