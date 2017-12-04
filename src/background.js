@@ -1,11 +1,16 @@
 
-function handleCreated(tab) {
-    //if (tab.incognito == true && tab.url == "about:privatebrowsing"){
-    // about:privatebrowsing does not work...
-    if (tab.incognito == true && tab.url == "about:blank"){
-	browser.tabs.create({url: "about:blank"});
-	console.log(tab.url);
+// A big thanks to Smile4ever for making this extension possible.
+// https://stackoverflow.com/a/47529107
+
+function handleUpdated(tabId, changeInfo, tabInfo) {
+    if(changeInfo.favIconUrl){
+        //console.log("favIconUrl updated is " + changeInfo.favIconUrl);
+
+        if (tabInfo.incognito && changeInfo.favIconUrl.indexOf("privatebrowsing") > -1){
+            //console.log("opening about:blank..");
+            browser.tabs.update({url: "about:blank"});
+        }
     }
 }
 
-browser.tabs.onCreated.addListener(handleCreated);
+browser.tabs.onUpdated.addListener(handleUpdated);
