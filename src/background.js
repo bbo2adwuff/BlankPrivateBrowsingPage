@@ -13,4 +13,11 @@ function handleUpdated(tabId, changeInfo, tabInfo) {
     }
 }
 
+function winCreated(window) {
+    if(window.incognito){
+        browser.tabs.update({url: "about:blank"});
+    }
+}
+
 browser.tabs.onUpdated.addListener(handleUpdated);
+browser.windows.onCreated.addListener(winCreated)
