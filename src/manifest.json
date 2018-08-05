@@ -2,7 +2,7 @@
     "description": "A blank page for the private browsing page",
     "manifest_version": 2,
     "name": "Blank Private Browsing Page",
-    "version": "2.0",
+    "version": "2.1",
     "homepage_url": "https://github.com/ipotable/BlankPrivateBrowsingPage",
     "icons": {
 	"64": "icon.png"
@@ -18,7 +18,7 @@
 
     "applications": {
 	"gecko": {
-	    "strict_min_version": "57.0a1"
+	    "strict_min_version": "60.0"
 	}
     }
 }
