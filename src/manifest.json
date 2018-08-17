@@ -2,7 +2,7 @@
     "description": "A blank page for the private browsing page",
     "manifest_version": 2,
     "name": "Blank Private Browsing Page",
-    "version": "2.1",
+    "version": "2.2",
     "homepage_url": "https://github.com/ipotable/BlankPrivateBrowsingPage",
     "icons": {
 	"64": "icon.png"

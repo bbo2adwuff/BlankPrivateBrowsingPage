@@ -1,23 +1,21 @@
 
-// A big thanks to Smile4ever for making this extension possible.
-// https://stackoverflow.com/a/47529107
-
 function handleUpdated(tabId, changeInfo, tabInfo) {
-    if(changeInfo.favIconUrl){
-        //console.log("favIconUrl updated is " + changeInfo.favIconUrl);
 
-        if (tabInfo.incognito && changeInfo.favIconUrl.indexOf("privatebrowsing") > -1){
-            //console.log("opening about:blank..");
-            browser.tabs.update({url: "about:blank"});
-        }
-    }
-}
+    // console.log(tabId);
+    // console.log(changeInfo);
+    // console.log(tabInfo);
 
-function winCreated(window) {
-    if(window.incognito){
-        browser.tabs.update({url: "about:blank"});
+    if (changeInfo.status == "loading" && changeInfo.url == "about:privatebrowsing"){
+        //console.log("opening about:blank..");
+        browser.tabs.update({url: "about:blank", active: true});
+    } else if (
+        tabInfo.favIconUrl == "chrome://browser/skin/privatebrowsing/favicon.svg" &&
+            tabInfo.incognito == true &&
+            tabInfo.title == "Private Browsing" &&
+            tabInfo.url == "about:blank"
+    ){
+        browser.tabs.update({url: "about:blank", active: true});
     }
 }
 
 browser.tabs.onUpdated.addListener(handleUpdated);
-browser.windows.onCreated.addListener(winCreated)
