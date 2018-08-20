@@ -11,7 +11,6 @@ function handleUpdated(tabId, changeInfo, tabInfo) {
     } else if (
         tabInfo.favIconUrl == "chrome://browser/skin/privatebrowsing/favicon.svg" &&
             tabInfo.incognito == true &&
-            tabInfo.title == "Private Browsing" &&
             tabInfo.url == "about:blank"
     ){
         browser.tabs.update({url: "about:blank", active: true});
